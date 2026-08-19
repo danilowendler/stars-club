@@ -10,3 +10,6 @@ next-env.d.ts
 
 # not part of the site
 *.skill
+
+.vercel
+.env*
