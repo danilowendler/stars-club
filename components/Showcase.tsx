@@ -65,11 +65,12 @@ export default function Showcase() {
         },
       });
 
-      // The garment lights up while the section is still travelling into view,
-      // so it is already on stage by the time the pin takes hold.
+      // O canvas é fixo, então a peça sempre desenha no centro da viewport:
+      // acender cedo demais a faz aparecer por cima da seção anterior. Só
+      // acende quando a seção já ocupa ~90% da tela.
       ScrollTrigger.create({
         trigger: el,
-        start: 'top 92%',
+        start: 'top 10%',
         // 'bottom bottom' lands on the pin release, so the garment is gone
         // before the collection grid scrolls up behind it
         end: 'bottom bottom',

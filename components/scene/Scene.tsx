@@ -27,12 +27,16 @@ function GarmentStage() {
   const layout = useMemo(() => {
     const wide = size.width >= 1024;
     return {
-      // clears the copy column on desktop; sits above the copy on phones
+      // Desktop: livra a coluna de texto à direita.
+      // Celular: a peça mora na faixa de cima, entre a nav e o bloco de texto —
+      // a escala precisa ser travada, senão ela desce por cima da cópia.
       x: wide ? viewport.width * 0.26 : 0,
-      y: wide ? 0 : viewport.height * 0.2,
+      y: wide ? 0 : viewport.height * 0.265,
       scale: wide
         ? Math.min(1.05, viewport.height / 4.1)
-        : Math.min(0.72, viewport.width / 4.6),
+        : // A faixa livre no celular é só ~31% da tela (entre a nav e a cópia)
+          // no aparelho mais curto; a peça tem que caber nela com folga.
+          Math.min(0.34, viewport.width / 3.4),
     };
   }, [viewport.width, viewport.height, size.width]);
 

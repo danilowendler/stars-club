@@ -35,7 +35,9 @@
   --step-2: clamp(1.56rem, 1.36rem + 1vw, 2.33rem);
   --step-3: clamp(1.95rem, 1.6rem + 1.75vw, 3.26rem);
   --step-4: clamp(2.44rem, 1.86rem + 2.9vw, 4.56rem);
-  --step-display: clamp(2.75rem, 1rem + 9.5vw, 10rem);
+  /* o teto em vh evita que telas largas e baixas (1440x768) empurrem o CTA
+     do hero para fora da dobra — o display escalava só pela largura */
+  --step-display: clamp(2.75rem, min(1rem + 9.5vw, 16vh), 10rem);
 
   /* duration palette — quick / standard / slow */
   --d-quick: 180ms;

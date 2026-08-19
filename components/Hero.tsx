@@ -64,7 +64,7 @@ export default function Hero() {
     <section
       ref={root}
       id="top"
-      className="relative flex min-h-[100svh] flex-col justify-center px-6 pt-28 pb-16 sm:px-10"
+      className="relative flex min-h-[100svh] flex-col justify-center px-6 pt-24 pb-16 sm:px-10"
     >
       <div className="mx-auto w-full max-w-[110rem]">
         <p data-hero-kicker className="label mb-10 opacity-0">
@@ -75,7 +75,9 @@ export default function Hero() {
           5% OFF no Pix
         </p>
 
-        <h1 className="max-w-[22ch]">
+        {/* sem max-width em ch aqui: a unidade resolve contra o font-size do
+            h1 (o do corpo), não o do display, e espremia a frase */}
+        <h1>
           <span data-hero-mark className="block opacity-0">
             <Image
               src="/brand/wordmark.png"
@@ -83,25 +85,28 @@ export default function Hero() {
               width={1200}
               height={510}
               priority
-              className="h-auto w-[min(34rem,72vw)]"
+              className="h-auto w-[min(20rem,56vw)]"
             />
           </span>
+          {/* quebra explícita: no tamanho display cada palavra ocuparia uma
+              linha própria, e a frase perdia o ritmo */}
           <span
             data-hero-line
-            className="display mt-8 block text-balance text-bone opacity-0"
+            className="display mt-6 block text-bone opacity-0"
             style={{ fontSize: 'var(--step-display)' }}
           >
-            Nós vemos as estrelas.
+            <span className="block">Nós vemos</span>
+            <span className="block">as estrelas.</span>
           </span>
         </h1>
 
-        <div data-hero-sub className="mt-10 max-w-[46ch]">
+        <div data-hero-sub className="mt-8 max-w-[46ch]">
           <p className="text-dim" style={{ fontSize: 'var(--step-0)' }}>
             Streetwear autoral do Brasil, em cápsulas pequenas. Camisetas, moletom, tricô e jeans —
             cada peça guarda uma imagem inteira nas costas.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
+          <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-5">
             <a
               href="#showcase"
               className="group inline-flex cursor-pointer items-center gap-3 bg-bone px-8 py-4 text-ink transition-colors duration-200 hover:bg-gold"
